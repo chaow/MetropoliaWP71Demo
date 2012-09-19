@@ -1,4 +1,4 @@
 MetropoliaWP71Demo
 ==================
 
-demo
+Windows phone (7) application development demo
