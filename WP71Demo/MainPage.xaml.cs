@@ -72,13 +72,14 @@ namespace WP71Demo
             }
         }
 
+        // application level
         PhoneApplicationService service = PhoneApplicationService.Current;
         private void GoToSecondPage()
         { 
             Computer c = new Computer();
             c.Brand = "Metropolia";
             c.Price = 100;
-               
+
             service.State[Computer.KEY] = DataContractSerializerHelper.Serialize(c);
 
             NavigationService.Navigate(new Uri("/View/SecondPage.xaml", UriKind.Relative));       
