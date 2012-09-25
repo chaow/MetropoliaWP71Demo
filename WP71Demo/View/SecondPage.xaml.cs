@@ -19,13 +19,35 @@ namespace WP71Demo.Views
             {
                 if (service.State.ContainsKey(Computer.KEY))
                 {
-                    Computer c = DataContractSerializerHelper.Deserialize<Computer>(service.State[Computer.KEY] as string);
-                    System.Diagnostics.Debug.WriteLine(c.ToString());
+                    string target = string.Empty;
+                    target = service.State[Computer.KEY] as string;
+                    if (target != string.Empty)
+                    {
+                        Computer c = DataContractSerializerHelper.Deserialize<Computer>(target);
+
+                        System.Diagnostics.Debug.WriteLine(c.ToString());
+
+                        // IsolatedStorageSettings
+                        var setting = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
+                        if (setting.Contains(Computer.KEY))
+                        {
+                            // if already saved, remove it
+                            setting.Remove(Computer.KEY);
+                            System.Diagnostics.Debug.WriteLine("Computer object is removed.");
+                        }
+                        setting.Add(Computer.KEY, target);
+                        setting.Save();
+                        System.Diagnostics.Debug.WriteLine("Computer object is saved.");
+                    }
                 }
             }
             catch (System.ArgumentNullException)
             {
                 System.Diagnostics.Debug.WriteLine("No such key.");
+            }
+            catch (System.NullReferenceException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
             }
 
             base.OnNavigatedTo(e);

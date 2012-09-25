@@ -6,7 +6,7 @@ namespace WP71Demo.Model
     public class Person : INotifyPropertyChanged
     {
         private string _name = "";
-        public string name
+        public string Name
         {
             set
             {
@@ -22,9 +22,22 @@ namespace WP71Demo.Model
             }
         }
 
-        // TODO add the coorespoding sets and gets same as the property name
         private string _nickName = "";
-
+        public string Nickname
+        {
+            set
+            {
+                if (value != _nickName)
+                {
+                    _nickName = value;
+                    NotifyPropertyChanged("personName");
+                }
+            }
+            get
+            {
+                return _nickName;
+            }
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

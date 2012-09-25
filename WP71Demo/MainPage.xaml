@@ -25,8 +25,8 @@
             <controls:Panorama.Background>
                 <ImageBrush ImageSource="PanoramaBackground.png"/>
             </controls:Panorama.Background>
- 
-            <!--Panorama item one-->
+
+        <!--Panorama item one-->
             <controls:PanoramaItem Header="first item">
                 <ListBox Name="PersonList" SelectionChanged="PersonList_SelectionChanged" 
                                     Margin="0,0,-12,0" ItemsSource="{Binding PersonViewModel}" >
@@ -35,21 +35,54 @@
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
                                 <Image Height="100" Width="100" Source="ApplicationIcon.png"/>
                                 <StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                                    <TextBlock Text="{Binding name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>                                    
-                                </StackPanel>
+                                    
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
+                                               Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    
+                                    <TextBlock Text="{Binding Nickname}" TextWrapping="Wrap" 
+                                               FontSize="18" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            </StackPanel>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </controls:PanoramaItem>
- 
+            
             <!--Panorama item two-->
             <controls:PanoramaItem Header="second item">
-                <StackPanel Orientation="Vertical" Margin="0,0,0,17">
-                    <Button Content="View Popup" Height="113" Name="button1" Width="300" />
-                    <Button Content="Go to second page" Height="113" Name="button2" Width="300" />
-                </StackPanel>
+                <ScrollViewer>
+                    <Grid>
+                       
+                        <toolkit:PerformanceProgressBar Name="myIndicator" 
+                                                        Visibility="Collapsed" 
+                                                        IsIndeterminate="False"
+                                                        Foreground="Red"
+                                                        />
+                        
+                        <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
+                            <Button Content="fire WebClient event" Height="100" 
+                                    Name="button_WebClient" Width="300" Click="FireNetworking" />
+                            
+                            <Button Content="fire HttpWebRequest event" FontSize="20" Height="100"
+                                    Name="button_HttpWebRequest" Width="300" Click="FireNetworking" />
+                            
+                            <Button Content="JSON example" Height="100" 
+                                    Name="button_handleJson" Width="300" Click="HandleJSON" />
+                            
+                            <Button Content="Indicator example" Height="100" 
+                                    Name="button_fireIndicator" Width="300" Click="FireIndicator" />
+                        </StackPanel>
+
+                        
+                        <StackPanel Orientation="Vertical"  Margin="0,400,0,17">
+                            <Button Content="View Popup" Height="100" Name="button1" Width="300" />
+                            <Button Content="Go to second page" Height="100" Name="button2" Width="300" />
+                        </StackPanel>
+
+                    </Grid>
+                </ScrollViewer>
             </controls:PanoramaItem>
+            
         </controls:Panorama>
     </Grid>
 </phone:PhoneApplicationPage>

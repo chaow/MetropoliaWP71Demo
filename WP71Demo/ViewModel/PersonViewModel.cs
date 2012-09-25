@@ -32,7 +32,8 @@ namespace WP71Demo.ViewModel
             for (int i = 0; i < 10; i++)
             {
                 Person p = new Person();
-                p.name = "Person " + i;
+                p.Name = "Person " + i;
+                p.Nickname = "Person nickname " + i;
                 _itemViewModel.Add(p);
             }
         }

@@ -80,12 +80,20 @@ namespace WP71Demo
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("---Application Launching---");
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("---Application Activated---");
+
+            if (!e.IsApplicationInstancePreserved)
+            { 
+                // deal with tomstoned case
+                // restore data/state
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -93,12 +101,14 @@ namespace WP71Demo
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             // Ensure that required application state is persisted here.
+            System.Diagnostics.Debug.WriteLine("---Application Deactivated---");
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("---Application Closing---");
         }
 
         // Code to execute if a navigation fails
