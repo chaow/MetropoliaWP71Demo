@@ -30,7 +30,7 @@ namespace WP71Demo.Model
                 if (value != _nickName)
                 {
                     _nickName = value;
-                    NotifyPropertyChanged("nickName");
+                    NotifyPropertyChanged("personName");
                 }
             }
             get

@@ -120,4 +120,16 @@
   <data name="AppTitle" xml:space="preserve">
     <value>WP7 demo</value>
   </data>
+  <data name="Cat" xml:space="preserve">
+    <value>Cat</value>
+  </data>
+  <data name="Dog" xml:space="preserve">
+    <value>Dog</value>
+  </data>
+  <data name="Header1" xml:space="preserve">
+    <value>Here</value>
+  </data>
+  <data name="Header2" xml:space="preserve">
+    <value>There</value>
+  </data>
 </root>

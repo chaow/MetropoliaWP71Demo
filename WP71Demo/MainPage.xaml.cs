@@ -11,6 +11,7 @@ using System.Windows.Controls.Primitives;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Net.NetworkInformation;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 using WP71Demo.Model;
 using WP71Demo.UserControls;
 
@@ -29,16 +30,17 @@ namespace WP71Demo
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
         }
 
-        #region Session 4
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            // get to know the page is loaded once
-            if (isFirstLoad)
-            {
-                isFirstLoad = false;
-            }
+            InitSession5();
+            InitSession4();
+            InitSession6();
+        }
 
 
+        #region Session 4
+        private void InitSession4()
+        {
             this.button1.Click += new RoutedEventHandler(button_Click);
             this.button2.Click += new RoutedEventHandler(button_Click);
 
@@ -135,14 +137,23 @@ namespace WP71Demo
         #endregion
 
 
-        #region Seesion 5
+        #region Session 5
+
+        private void InitSession5()
+        {
+            // get to know the page is loaded once
+            if (isFirstLoad)
+            {
+                isFirstLoad = false;
+            }
+        }
 
         #region Tombstoning
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
             //before leave this page, save the state 
-            //this.State["pageLoaded"] = isFirstLoad;
-            //this.State["PersonViewModel"] = App.PersonViewModel;
+            this.State["pageLoaded"] = isFirstLoad;
+            this.State["PersonViewModel"] = App.PersonViewModel;
             base.OnNavigatedFrom(e);
         }
 
@@ -253,9 +264,9 @@ namespace WP71Demo
                     // bad request
                     System.Diagnostics.Debug.WriteLine("HTTP status code: " + response.StatusCode);
                 }
-             }
-             catch(Exception e)
-             { 
+                }
+                catch(Exception e)
+                { 
                 Deployment.Current.Dispatcher.BeginInvoke(delegate() {
 
                     System.Diagnostics.Debug.WriteLine(e.Message);
@@ -342,6 +353,153 @@ namespace WP71Demo
         {
             System.Threading.Thread.Sleep(10000);
         }
+        #endregion
+
+        #endregion
+
+
+        #region Session 6
+
+        private void InitSession6()
+        {
+            InitApplicationBar();
+        }
+
+        #region Application bar
+
+        private void InitApplicationBar()
+        {
+            // localize the text
+            ApplicationBarIconButton button1 = ApplicationBar.Buttons[0] as ApplicationBarIconButton;
+            if (button1 != null)
+            {
+                button1.Text = AppResources.Cat;
+            }
+
+            ApplicationBarMenuItem menuItem1 = ApplicationBar.MenuItems[0] as ApplicationBarMenuItem;
+            if (menuItem1 != null)
+            {
+                menuItem1.Text = AppResources.Header2;
+            }
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            ApplicationBarIconButton abib = sender as ApplicationBarIconButton;
+            if (abib.Text.Equals(AppResources.Cat))
+            {
+                System.Diagnostics.Debug.WriteLine("--- Application bar icon button -> Cat ---");
+            }
+        }
+
+        private void ApplicationBarMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplicationBarMenuItem abmi = sender as ApplicationBarMenuItem;
+            if (abmi.Text.Equals(AppResources.Header2))
+            {
+                System.Diagnostics.Debug.WriteLine("--- Application bar menu button -> header2 ---");
+            }
+        }
+
+        #endregion
+
+        #region Context menu
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // get context menu item header info
+            string header = (sender as MenuItem).Header.ToString();
+
+            ListBoxItem selectedListBoxItem 
+                = this.PersonList.ItemContainerGenerator.ContainerFromItem((sender as MenuItem).DataContext) as ListBoxItem;
+            // check if the list item is null
+            if (selectedListBoxItem == null)
+            {
+                return;
+            }
+
+            if (header == AppResources.Header1)
+            {
+                System.Diagnostics.Debug.WriteLine("--- context menu: " + AppResources.Header1 + "---");
+            }
+            else if(header == AppResources.Header2)
+            {
+                System.Diagnostics.Debug.WriteLine("--- context menu: " + AppResources.Header2 + "---");
+            }
+        }
+        #endregion
+ 
+        #region Phone tasks
+        private void AddressButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddressChooserTask addressTask = new AddressChooserTask();
+            addressTask.Show();
+        }
+
+        private void BingMapButton_Click(object sender, RoutedEventArgs e)
+        {
+            BingMapsTask mapTask = new BingMapsTask();
+            mapTask.SearchTerm = "Espoo";
+            mapTask.Show();
+        }
+
+        private void EmailAddressButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmailAddressChooserTask emailAddressTask = new EmailAddressChooserTask();
+            emailAddressTask.Show();
+        }
+
+        private void EmailComposeButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmailComposeTask emailComposeTask = new EmailComposeTask();
+            emailComposeTask.To = "a.b@c.d";
+            emailComposeTask.Subject = "Untitled";
+            emailComposeTask.Body = "Somthing here...";
+            emailComposeTask.Show();
+        }
+
+        private void PhoneCallButton_Click(object sender, RoutedEventArgs e)
+        {
+            PhoneCallTask phoneCallTask = new PhoneCallTask();
+            phoneCallTask.DisplayName = "Metropolia";
+            phoneCallTask.PhoneNumber = "0123456789";
+            phoneCallTask.Show();
+        }
+
+        private void PhoneNumberButton_Click(object sender, RoutedEventArgs e)
+        {
+            PhoneNumberChooserTask phoneNumberChooserTask = new PhoneNumberChooserTask();
+            phoneNumberChooserTask.Show();
+        }
+
+        private void PhotoChooserButton_Click(object sender, RoutedEventArgs e)
+        {
+            PhotoChooserTask photoChooserTask = new PhotoChooserTask();
+            photoChooserTask.ShowCamera = true;
+            photoChooserTask.Show();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTask searchTask = new SearchTask();
+            searchTask.SearchQuery = "Metropolia";
+            searchTask.Show();
+        }
+
+        private void SmsComposeButton_Click(object sender, RoutedEventArgs e)
+        {
+            SmsComposeTask smsTask = new SmsComposeTask();
+            smsTask.To = "0123456789";
+            smsTask.Body = "Something here";
+            smsTask.Show();
+        }
+
+        private void WebBrowserButton_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask webBrowserTask = new WebBrowserTask();
+            webBrowserTask.Uri = new Uri("https://www.google.com", UriKind.Absolute);
+            webBrowserTask.Show();
+        }
+
         #endregion
 
         #endregion

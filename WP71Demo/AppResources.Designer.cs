@@ -68,5 +68,41 @@ namespace WP71Demo {
                 return ResourceManager.GetString("AppTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cat.
+        /// </summary>
+        public static string Cat {
+            get {
+                return ResourceManager.GetString("Cat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dog.
+        /// </summary>
+        public static string Dog {
+            get {
+                return ResourceManager.GetString("Dog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here.
+        /// </summary>
+        public static string Header1 {
+            get {
+                return ResourceManager.GetString("Header1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There.
+        /// </summary>
+        public static string Header2 {
+            get {
+                return ResourceManager.GetString("Header2", resourceCulture);
+            }
+        }
     }
 }

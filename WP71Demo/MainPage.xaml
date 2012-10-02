@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -35,6 +35,15 @@
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
                                 <Image Height="100" Width="100" Source="ApplicationIcon.png"/>
                                 <StackPanel Margin="0,0,0,17" Width="432" Height="78">
+                                    <!--Context menu-->
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu >
+                                            <toolkit:MenuItem Click="MenuItem_Click"
+                                                Header="{Binding Path=AppResources.Header1, Source={StaticResource LocalizedStrings}}" />
+                                            <toolkit:MenuItem Click="MenuItem_Click"
+                                                Header="{Binding Path=AppResources.Header2, Source={StaticResource LocalizedStrings}}" />
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>    
                                     
                                     <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
                                                Style="{StaticResource PhoneTextExtraLargeStyle}"/>
@@ -58,8 +67,12 @@
                                                         IsIndeterminate="False"
                                                         Foreground="Red"
                                                         />
-                        
                         <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
+                            <Button Content="View Popup" Height="100" Name="button1" Width="300" />
+                            <Button Content="Go to second page" Height="100" Name="button2" Width="300" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Vertical"  Margin="0,210,0,17">
                             <Button Content="fire WebClient event" Height="100" 
                                     Name="button_WebClient" Width="300" Click="FireNetworking" />
                             
@@ -74,15 +87,49 @@
                         </StackPanel>
 
                         
-                        <StackPanel Orientation="Vertical"  Margin="0,400,0,17">
-                            <Button Content="View Popup" Height="100" Name="button1" Width="300" />
-                            <Button Content="Go to second page" Height="100" Name="button2" Width="300" />
-                        </StackPanel>
+
 
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>
-            
+
+            <!--Panorama item three -->
+            <controls:PanoramaItem Header="third item">
+                <ScrollViewer>
+                    <Grid>
+                        <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
+                        <!-- phone tasks -->
+                            <Button Content="AddressChooserTask" Height="100" Name="AddressButton" Width="300" Click="AddressButton_Click"/>
+                            <Button Content="BingMapTask" Height="100" Name="BingMapButton" Width="300" Click="BingMapButton_Click"/>
+                            <Button Content="EmailAddressTask" Height="100" Name="EmailAddressButton" Width="300" Click="EmailAddressButton_Click"/>
+                            <Button Content="EmailComposeTask" Height="100" Name="EmailComposeButton" Width="300" Click="EmailComposeButton_Click"/>
+                            <Button Content="PhoneCallTask" Height="100" Name="PhoneCallButton" Width="300" Click="PhoneCallButton_Click"/>
+                            <Button Content="PhoneNumberChooserTask" Height="100" Name="PhoneNumberButton" Width="300" Click="PhoneNumberButton_Click"/>
+                            <Button Content="PhotoChooserTask" Height="100" Name="PhotoChooserButton" Width="300" Click="PhotoChooserButton_Click"/>
+                            <Button Content="SearchTask" Height="100" Name="SearchButton" Width="300" Click="SearchButton_Click"/>
+                            <Button Content="SmsComposeTask" Height="100" Name="SmsComposeButton" Width="300" Click="SmsComposeButton_Click"/>
+                            <Button Content="WebBrowserTask" Height="100" Name="WebBrowserButton" Width="300" Click="WebBrowserButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+
+
         </controls:Panorama>
     </Grid>
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" >
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.animal.cat.png" 
+                                            Text="Button 1" Click="ApplicationBarIconButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.animal.dog.png" 
+                                            Text="Button 2" Click="ApplicationBarIconButton_Click"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2" Click="ApplicationBarMenuItem_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
 </phone:PhoneApplicationPage>
