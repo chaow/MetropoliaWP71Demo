@@ -15,6 +15,7 @@ namespace WP71Demo.Views
 {
     public partial class SecondPage : PhoneApplicationPage
     {
+
         private Stream mCapturedImage;
         private CameraCaptureTask mCameraCaptureTask = null;
         private int _width;
@@ -37,6 +38,8 @@ namespace WP71Demo.Views
         {
             System.Diagnostics.Debug.WriteLine("---OnNavigatedTo---");
             GetNavigationPassingObjects();
+            // check the tile is the target
+            CheckTile();
             LoadFromLocalStorage();
             base.OnNavigatedTo(e);
         }
@@ -244,6 +247,36 @@ namespace WP71Demo.Views
             catch (Exception)
             {
                 System.Diagnostics.Debug.WriteLine("No such file.");
+            }
+        }
+
+
+        private void CheckTile()
+        {
+            string pinnedImage = string.Empty;
+            try
+            {
+                if (NavigationContext.QueryString.TryGetValue("pinned", out pinnedImage))
+                {
+                    if (pinnedImage.Equals("MyImage.jpg"))
+                    {
+                        MessageBox.Show("It is my image.");
+                        System.Diagnostics.Debug.WriteLine("It is my image.");
+                    }
+                    else
+                    {
+                        MessageBox.Show(pinnedImage);
+                        System.Diagnostics.Debug.WriteLine(pinnedImage);
+                    }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("no such keyword.");
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                System.Diagnostics.Debug.WriteLine("No such argument: " + e.Message);
             }
         }
 
