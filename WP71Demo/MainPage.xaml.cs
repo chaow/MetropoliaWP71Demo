@@ -504,5 +504,42 @@ namespace WP71Demo
 
         #endregion
 
+
+        #region Session 7
+
+        private void VibrationnButton_Click(object sender, RoutedEventArgs e)
+        {
+            /**
+             * Note that if we allow vibration effect in the app, according to 
+             * MS App publishing requirement, we HAVE to allow user to disable 
+             * this feature also. This is MANDATORY!
+             */ 
+            Microsoft.Devices.VibrateController vc = Microsoft.Devices.VibrateController.Default;
+            vc.Start(TimeSpan.FromMilliseconds(200));
+        }
+
+        private void Motion_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/MotionPage.xaml", UriKind.Relative));   
+        }
+
+        private void LocationButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/LocationPage.xaml", UriKind.Relative)); 
+        }
+
+        private void WebViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/WebViewPage.xaml", UriKind.Relative)); 
+        }
+
+        private void ReminderButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/ReminderPage.xaml", UriKind.Relative)); 
+        }
+
+        #endregion
+     
+
     }
 }

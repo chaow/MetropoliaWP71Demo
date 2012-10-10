@@ -86,9 +86,6 @@
                                     Name="button_fireIndicator" Width="300" Click="FireIndicator" />
                         </StackPanel>
 
-                        
-
-
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>
@@ -114,7 +111,20 @@
                 </ScrollViewer>
             </controls:PanoramaItem>
 
-
+            <!--Panorama item four -->
+            <controls:PanoramaItem Header="fourth item">
+                <ScrollViewer>
+                    <Grid>
+                        <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
+                            <Button Content="Vibration" Height="100" Name="VibrationButton" Width="300" Click="VibrationnButton_Click"/>
+                            <Button Content="Motion" Height="100" Name="MotionButton" Width="300" Click="Motion_Click"/>
+                            <Button Content="Location and Map" Height="100" Name="LocationButton" Width="300" Click="LocationButton_Click"/>
+                            <Button Content="Reminder and picker" Height="100" Name="ReminderButton" Width="300" Click="ReminderButton_Click"/>
+                            <Button Content="Web view" Height="100" Name="WebViewButton" Width="300" Click="WebViewButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
 

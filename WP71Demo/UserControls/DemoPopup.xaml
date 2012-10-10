@@ -9,9 +9,13 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="800" d:DesignWidth="480">
 
-    <Grid x:Name="LayoutRoot" Background="Red" Width="480" Height="800">
-        <Image Source="/WP71Demo;component/PanoramaBackground.png" Width="480"/>
-        <TextBlock Height="80" HorizontalAlignment="Left" Margin="54,615,0,0" Name="textBlock1" Text="Press back key!" VerticalAlignment="Top" Width="294" />
-        <Button Content="Click me?" Height="80" HorizontalAlignment="Left" Margin="237,701,0,0" Name="button1" VerticalAlignment="Top" Width="188" />
+    <Grid x:Name="LayoutRoot" Background="Red" Width="480" Height="800" Margin="0,-50,0,0">
+        <ScrollViewer>
+            <Grid >
+                <Image Source="/WP71Demo;component/PanoramaBackground.png" Width="480"/>
+                <TextBlock Height="80" HorizontalAlignment="Left" Margin="54,615,0,0" Name="textBlock1" Text="Press back key!" VerticalAlignment="Top" Width="294" />
+                <Button Content="Click me?" Height="80" HorizontalAlignment="Left" Margin="200,701,0,0" Name="button1" VerticalAlignment="Top" Width="188" />
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>
