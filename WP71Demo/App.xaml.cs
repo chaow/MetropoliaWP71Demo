@@ -1,38 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+﻿using System.Windows;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using WP71Demo.ViewModel;
 
 namespace WP71Demo
 {
     public partial class App : Application
     {
-        /// <summary>
-        /// App level ViewModel instance
-        /// </summary>
-        private static PersonViewModel _personViewModel = null;
-        public static PersonViewModel PersonViewModel
-        {
-            get
-            {
-                if (_personViewModel == null)
-                {
-                    _personViewModel = new PersonViewModel();
-                }
-                return _personViewModel;
-            }
-        }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -80,35 +54,28 @@ namespace WP71Demo
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("---Application Launching---");
+
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("---Application Activated---");
 
-            if (!e.IsApplicationInstancePreserved)
-            { 
-                // deal with tomstoned case
-                // restore data/state
-            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
-            // Ensure that required application state is persisted here.
-            System.Diagnostics.Debug.WriteLine("---Application Deactivated---");
+
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("---Application Closing---");
+
         }
 
         // Code to execute if a navigation fails

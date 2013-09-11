@@ -120,16 +120,19 @@
   <data name="AppTitle" xml:space="preserve">
     <value>WP7 demo</value>
   </data>
-  <data name="Cat" xml:space="preserve">
-    <value>Cat</value>
+  <data name="Button3" xml:space="preserve">
+    <value>Another button</value>
   </data>
-  <data name="Dog" xml:space="preserve">
-    <value>Dog</value>
+  <data name="MessageBoxString" xml:space="preserve">
+    <value>Message popup!</value>
   </data>
-  <data name="Header1" xml:space="preserve">
-    <value>Here</value>
+  <data name="SharedButton1" xml:space="preserve">
+    <value>Shared button 1</value>
   </data>
-  <data name="Header2" xml:space="preserve">
-    <value>There</value>
+  <data name="SharedButton2" xml:space="preserve">
+    <value>Shared button 2</value>
+  </data>
+  <data name="TextBlockString" xml:space="preserve">
+    <value>This is a text block.</value>
   </data>
 </root>

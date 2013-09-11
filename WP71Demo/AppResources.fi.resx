@@ -120,16 +120,4 @@
   <data name="AppTitle" xml:space="preserve">
     <value>WP7 demo in Finnish</value>
   </data>
-  <data name="Cat" xml:space="preserve">
-    <value>Cat in Finnish</value>
-  </data>
-  <data name="Dog" xml:space="preserve">
-    <value>Dog in Finnish</value>
-  </data>
-  <data name="Header1" xml:space="preserve">
-    <value>Here in Finnish</value>
-  </data>
-  <data name="Header2" xml:space="preserve">
-    <value>There in Finnish</value>
-  </data>
 </root>

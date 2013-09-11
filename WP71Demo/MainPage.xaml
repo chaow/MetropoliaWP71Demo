@@ -1,145 +1,49 @@
-﻿<phone:PhoneApplicationPage 
+﻿<phone:PhoneApplicationPage
     x:Class="WP71Demo.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    toolkit:TiltEffect.IsTiltEnabled="True"
-    >
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
+    <ScrollViewer>
     <Grid x:Name="LayoutRoot" Background="Transparent">
- 
-        <!--Panorama control-->
-        <controls:Panorama Title="{Binding Path=AppResources.AppTitle, Source={StaticResource LocalizedStrings}}" >
-            <controls:Panorama.Background>
-                <ImageBrush ImageSource="PanoramaBackground.png"/>
-            </controls:Panorama.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <!--Panorama item one-->
-            <controls:PanoramaItem Header="first item">
-                <ListBox Name="PersonList" SelectionChanged="PersonList_SelectionChanged" 
-                                    Margin="0,0,-12,0" ItemsSource="{Binding PersonViewModel}" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                <Image Height="100" Width="100" Source="ApplicationIcon.png"/>
-                                <StackPanel Margin="0,0,0,17" Width="432" Height="78">
-                                    <!--Context menu-->
-                                    <toolkit:ContextMenuService.ContextMenu>
-                                        <toolkit:ContextMenu >
-                                            <toolkit:MenuItem Click="MenuItem_Click"
-                                                Header="{Binding Path=AppResources.Header1, Source={StaticResource LocalizedStrings}}" />
-                                            <toolkit:MenuItem Click="MenuItem_Click"
-                                                Header="{Binding Path=AppResources.Header2, Source={StaticResource LocalizedStrings}}" />
-                                        </toolkit:ContextMenu>
-                                    </toolkit:ContextMenuService.ContextMenu>    
-                                    
-                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
-                                               Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    
-                                    <TextBlock Text="{Binding Nickname}" TextWrapping="Wrap" 
-                                               FontSize="18" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </controls:PanoramaItem>
-            
-            <!--Panorama item two-->
-            <controls:PanoramaItem Header="second item">
-                <ScrollViewer>
-                    <Grid>
-                       
-                        <toolkit:PerformanceProgressBar Name="myIndicator" 
-                                                        Visibility="Collapsed" 
-                                                        IsIndeterminate="False"
-                                                        Foreground="Red"
-                                                        />
-                        <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
-                            <Button Content="View Popup" Height="100" Name="button1" Width="300" />
-                            <Button Content="Go to second page" Height="100" Name="button2" Width="300" />
-                        </StackPanel>
-                        
-                        <StackPanel Orientation="Vertical"  Margin="0,210,0,17">
-                            <Button Content="fire WebClient event" Height="100" 
-                                    Name="button_WebClient" Width="300" Click="FireNetworking" />
-                            
-                            <Button Content="fire HttpWebRequest event" FontSize="20" Height="100"
-                                    Name="button_HttpWebRequest" Width="300" Click="FireNetworking" />
-                            
-                            <Button Content="JSON example" Height="100" 
-                                    Name="button_handleJson" Width="300" Click="HandleJSON" />
-                            
-                            <Button Content="Indicator example" Height="100" 
-                                    Name="button_fireIndicator" Width="300" Click="FireIndicator" />
-                        </StackPanel>
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=AppResources.AppTitle, Source={StaticResource LocalizedStrings}}" 
+                       Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
 
-                    </Grid>
-                </ScrollViewer>
-            </controls:PanoramaItem>
-
-            <!--Panorama item three -->
-            <controls:PanoramaItem Header="third item">
-                <ScrollViewer>
-                    <Grid>
-                        <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
-                        <!-- phone tasks -->
-                            <Button Content="AddressChooserTask" Height="100" Name="AddressButton" Width="300" Click="AddressButton_Click"/>
-                            <Button Content="BingMapTask" Height="100" Name="BingMapButton" Width="300" Click="BingMapButton_Click"/>
-                            <Button Content="EmailAddressTask" Height="100" Name="EmailAddressButton" Width="300" Click="EmailAddressButton_Click"/>
-                            <Button Content="EmailComposeTask" Height="100" Name="EmailComposeButton" Width="300" Click="EmailComposeButton_Click"/>
-                            <Button Content="PhoneCallTask" Height="100" Name="PhoneCallButton" Width="300" Click="PhoneCallButton_Click"/>
-                            <Button Content="PhoneNumberChooserTask" Height="100" Name="PhoneNumberButton" Width="300" Click="PhoneNumberButton_Click"/>
-                            <Button Content="PhotoChooserTask" Height="100" Name="PhotoChooserButton" Width="300" Click="PhotoChooserButton_Click"/>
-                            <Button Content="SearchTask" Height="100" Name="SearchButton" Width="300" Click="SearchButton_Click"/>
-                            <Button Content="SmsComposeTask" Height="100" Name="SmsComposeButton" Width="300" Click="SmsComposeButton_Click"/>
-                            <Button Content="WebBrowserTask" Height="100" Name="WebBrowserButton" Width="300" Click="WebBrowserButton_Click"/>
-                        </StackPanel>
-                    </Grid>
-                </ScrollViewer>
-            </controls:PanoramaItem>
-
-            <!--Panorama item four -->
-            <controls:PanoramaItem Header="fourth item">
-                <ScrollViewer>
-                    <Grid>
-                        <StackPanel Orientation="Vertical"  Margin="0,0,0,17">
-                            <Button Content="Vibration" Height="100" Name="VibrationButton" Width="300" Click="VibrationnButton_Click"/>
-                            <Button Content="Motion" Height="100" Name="MotionButton" Width="300" Click="Motion_Click"/>
-                            <Button Content="Location and Map" Height="100" Name="LocationButton" Width="300" Click="LocationButton_Click"/>
-                            <Button Content="Reminder and picker" Height="100" Name="ReminderButton" Width="300" Click="ReminderButton_Click"/>
-                            <Button Content="Web view" Height="100" Name="WebViewButton" Width="300" Click="WebViewButton_Click"/>
-                        </StackPanel>
-                    </Grid>
-                </ScrollViewer>
-            </controls:PanoramaItem>
-        </controls:Panorama>
-    </Grid>
-
-    <!--Sample code showing usage of ApplicationBar-->
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" >
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar.animal.cat.png" 
-                                            Text="Button 1" Click="ApplicationBarIconButton_Click"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar.animal.dog.png" 
-                                            Text="Button 2" Click="ApplicationBarIconButton_Click"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1" Click="ApplicationBarMenuItem_Click"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2" Click="ApplicationBarMenuItem_Click"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+           <StackPanel Orientation="Horizontal" Height="120" VerticalAlignment="Top" >
+                    <Button Name="SharedButton1" Click="SharedButton_Click"
+                            Content="{Binding Path=AppResources.SharedButton1, Source={StaticResource LocalizedStrings}}"/>
+                    <Button Name="SharedButton2"  Click="SharedButton_Click"
+                            Content="{Binding Path=AppResources.SharedButton2, Source={StaticResource LocalizedStrings}}"/>
+             </StackPanel>
+             
+            <StackPanel Margin="50, 250, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Name="anotherButton" Content="{Binding Path=AppResources.Button3, Source={StaticResource LocalizedStrings}}"/>
+                    <TextBox Name="textBox" HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=AppResources.TextBlockString, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top"/>
+                </StackPanel>
+            </Grid>
+           
+        </Grid>
+    </ScrollViewer>
+    
 </phone:PhoneApplicationPage>
