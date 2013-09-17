@@ -2,11 +2,28 @@
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using WP71Demo.ViewModel;
 
 namespace WP71Demo
 {
     public partial class App : Application
     {
+
+        /// <summary>
+        /// App level ViewModel instance
+        /// </summary>
+        private static PersonViewModel _personViewModel = null;
+        public static PersonViewModel PersonViewModel
+        {
+            get
+            {
+                if (_personViewModel == null)
+                {
+                    _personViewModel = new PersonViewModel();
+                }
+                return _personViewModel;
+            }
+        }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
