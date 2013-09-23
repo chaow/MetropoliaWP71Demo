@@ -57,6 +57,7 @@
     <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Servicemodel" />
+    <Reference Include="System.Servicemodel.Web" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -82,6 +83,8 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Computer.cs" />
+    <Compile Include="Model\ComputerList.cs" />
     <Compile Include="Model\MobelBase.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\School.cs" />
