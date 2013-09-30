@@ -61,6 +61,33 @@ namespace WP71Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CAT.
+        /// </summary>
+        public static string AppBarIconButtonCat {
+            get {
+                return ResourceManager.GetString("AppBarIconButtonCat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DOG.
+        /// </summary>
+        public static string AppBarIconButtonDog {
+            get {
+                return ResourceManager.GetString("AppBarIconButtonDog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MONEY.
+        /// </summary>
+        public static string AppBarIconButtonMoney {
+            get {
+                return ResourceManager.GetString("AppBarIconButtonMoney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WP7 demo.
         /// </summary>
         public static string AppTitle {
@@ -75,6 +102,24 @@ namespace WP71Demo {
         public static string Button3 {
             get {
                 return ResourceManager.GetString("Button3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What?.
+        /// </summary>
+        public static string Header1 {
+            get {
+                return ResourceManager.GetString("Header1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What!.
+        /// </summary>
+        public static string Header2 {
+            get {
+                return ResourceManager.GetString("Header2", resourceCulture);
             }
         }
         

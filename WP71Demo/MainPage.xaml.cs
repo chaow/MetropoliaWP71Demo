@@ -21,10 +21,96 @@ namespace WP71Demo
     {
         private Popup _popup = null;
 
+        private ApplicationBarIconButton _appBarButtonCat = null;
+        private ApplicationBarIconButton _appBarButtonDog = null;
+        private ApplicationBarIconButton _appBarButtonMoney = null;
+
+        private ApplicationBarMenuItem _menuItemMetropolia = null;
+        private ApplicationBarMenuItem _menuItemEvtek = null;
+
         public MainPage()
         {
             InitializeComponent();
+            InitializeApplicationBar();
             Loaded += MainPage_Loaded;
+        }
+
+        /// <summary>
+        /// Create application bar
+        /// </summary>
+        private void InitializeApplicationBar()
+        {
+            if (_appBarButtonCat == null)
+            {
+                _appBarButtonCat = new ApplicationBarIconButton();
+                _appBarButtonCat.IconUri = new Uri("/Icons/appbar.animal.cat.png", UriKind.Relative);
+                _appBarButtonCat.Text = AppResources.AppBarIconButtonCat;
+                _appBarButtonCat.Click += _appBarButtonCat_Click;
+            }
+
+            if (_appBarButtonDog == null)
+            {
+                _appBarButtonDog = new ApplicationBarIconButton();
+                _appBarButtonDog.IconUri = new Uri("/Icons/appbar.animal.dog.png", UriKind.Relative);
+                _appBarButtonDog.Text = AppResources.AppBarIconButtonDog;
+            }
+
+            if (_appBarButtonMoney == null)
+            {
+                _appBarButtonMoney = new ApplicationBarIconButton();
+                _appBarButtonMoney.IconUri = new Uri("/Icons/appbar.money.png", UriKind.Relative);
+                _appBarButtonMoney.Text = AppResources.AppBarIconButtonMoney;
+            }
+
+            if (_menuItemMetropolia == null)
+            {
+                _menuItemMetropolia = new ApplicationBarMenuItem();
+                _menuItemMetropolia.IsEnabled = true;
+                _menuItemMetropolia.Text = "Metropolia";
+                _menuItemMetropolia.Click += _menuItemMetropolia_Click;
+            }
+
+            if (_menuItemEvtek == null)
+            {
+                _menuItemEvtek = new ApplicationBarMenuItem();
+                _menuItemEvtek.IsEnabled = true;
+                _menuItemEvtek.Text = "Evtek";
+            }
+
+            if (!ApplicationBar.Buttons.Contains(_appBarButtonCat))
+            {
+                ApplicationBar.Buttons.Add(_appBarButtonCat);
+            }
+            if (!ApplicationBar.Buttons.Contains(_appBarButtonDog))
+            {
+                ApplicationBar.Buttons.Add(_appBarButtonDog);
+            }
+            if (!ApplicationBar.Buttons.Contains(_appBarButtonMoney))
+            {
+                ApplicationBar.Buttons.Add(_appBarButtonMoney);
+            }
+
+            ApplicationBar.IsMenuEnabled = true;
+
+            if (!ApplicationBar.MenuItems.Contains(_menuItemMetropolia))
+            {
+                ApplicationBar.MenuItems.Add(_menuItemMetropolia);
+            }
+
+            if (!ApplicationBar.MenuItems.Contains(_menuItemEvtek))
+            {
+                ApplicationBar.MenuItems.Add(_menuItemEvtek);
+            }
+        }
+
+        void _menuItemMetropolia_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Application bar menu item: metropolia.");
+        }
+
+        void _appBarButtonCat_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Application bar icon button: cat.");
         }
 
         void MainPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -318,6 +404,34 @@ namespace WP71Demo
             System.Threading.Thread.Sleep(10000);
         }
         #endregion
+
+        /// <summary>
+        /// Context menu event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // get context menu item header info
+            string header = (sender as MenuItem).Header.ToString();
+
+            ListBoxItem selectedListBoxItem
+                = this.PersonList.ItemContainerGenerator.ContainerFromItem((sender as MenuItem).DataContext) as ListBoxItem;
+            // check if the list item is null
+            if (selectedListBoxItem == null)
+            {
+                return;
+            }
+
+            if (header == AppResources.Header1)
+            {
+                System.Diagnostics.Debug.WriteLine("--- context menu: " + AppResources.Header1 + "---");
+            }
+            else if (header == AppResources.Header2)
+            {
+                System.Diagnostics.Debug.WriteLine("--- context menu: " + AppResources.Header2 + "---");
+            }
+        }
 
 
 

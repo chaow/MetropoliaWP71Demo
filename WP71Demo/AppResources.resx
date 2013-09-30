@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppBarIconButtonCat" xml:space="preserve">
+    <value>CAT</value>
+  </data>
+  <data name="AppBarIconButtonDog" xml:space="preserve">
+    <value>DOG</value>
+  </data>
+  <data name="AppBarIconButtonMoney" xml:space="preserve">
+    <value>MONEY</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>WP7 demo</value>
   </data>
   <data name="Button3" xml:space="preserve">
     <value>Another button</value>
+  </data>
+  <data name="Header1" xml:space="preserve">
+    <value>What?</value>
+  </data>
+  <data name="Header2" xml:space="preserve">
+    <value>What!</value>
   </data>
   <data name="MessageBoxString" xml:space="preserve">
     <value>Message popup!</value>

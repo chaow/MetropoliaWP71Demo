@@ -14,7 +14,7 @@
     
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
 
-        <Image Source="/WP71Demo;component/Toolkit.Content/ApplicationBar.Add.png" Width="480" VerticalAlignment="Top"/>
+        <Image Source="/WP71Demo;component/Toolkit.Content/ApplicationBar.Select.png" Width="480" VerticalAlignment="Top"/>
         <TextBlock Height="80" HorizontalAlignment="Stretch"  Margin="54,480,0,0" Name="textBlock1" Text="Press back key!" VerticalAlignment="Top" Width="294" />
         <Button Content="Click me?" Height="80" HorizontalAlignment="Left" Margin="200,560,0,0" Name="button1" VerticalAlignment="Top" Width="188" />
 

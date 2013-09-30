@@ -28,14 +28,22 @@
 
             <!--Panorama item one-->
             <controls:PanoramaItem Header="item1">
-                <Grid>
+                <Grid  Margin="0,0,0,72">
                     <ListBox Name="PersonList" SelectionChanged="PersonList_SelectionChanged" 
                                     Margin="0,0,-12,0" ItemsSource="{Binding PersonViewModel}" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu >
+                                            <toolkit:MenuItem Click="MenuItem_Click"
+                                                Header="{Binding Path=AppResources.Header1, Source={StaticResource LocalizedStrings}}" />
+                                            <toolkit:MenuItem Click="MenuItem_Click"
+                                                Header="{Binding Path=AppResources.Header2, Source={StaticResource LocalizedStrings}}" />
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
                                     <Image Height="100" Width="100" Source="ApplicationIcon.png"/>
-                                    <StackPanel Margin="0,0,0,24" Width="432" Height="100">
+                                    <StackPanel Margin="0,0,0,24" Width="432" Height="120">
                                         <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
                                                Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                                         <TextBlock Text="{Binding Nickname}" TextWrapping="Wrap" 
@@ -55,7 +63,7 @@
                 <ScrollViewer>
                 
                 <Grid>
-                    <StackPanel Orientation="Vertical"  Margin="0,0,0,12">
+                    <StackPanel Orientation="Vertical"  Margin="0,0,0,72">
                             <Button Content="fire WebClient event" Height="100" 
                                     Name="button_WebClient" Width="300" Click="FireNetworking" />
 
@@ -77,5 +85,9 @@
             </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default"  Opacity="0.9" IsMenuEnabled="True" IsVisible="True"/>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
