@@ -25,8 +25,21 @@
             Foreground="Red"   />
         
         <controls:Panorama Title="{Binding Path=AppResources.AppTitle, Source={StaticResource LocalizedStrings}}">
+            <!--Panorama item two-->
+            <controls:PanoramaItem Header="item3">
+                <ScrollViewer>
+                    <Grid>
+                        <StackPanel Orientation="Vertical"  Margin="0,0,0,72">
 
-            <!--Panorama item one-->
+                            <Button Content="Sensor" Height="100" Name="button71" Width="300" />
+                            <Button Content="Location and map" Height="100" Name="button72" Width="300" />
+                            <Button Content="Reminder" Height="100" Name="button73" Width="300" />
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+            
+        <!--Panorama item one-->
             <controls:PanoramaItem Header="item1">
                 <Grid  Margin="0,0,0,72">
                     <ListBox Name="PersonList" SelectionChanged="PersonList_SelectionChanged" 

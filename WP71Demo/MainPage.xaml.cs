@@ -123,6 +123,25 @@ namespace WP71Demo
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
             worker.RunWorkerAsync();
+
+            button71.Click += button71_Click;
+            button72.Click += button72_Click;
+            button73.Click += button73_Click;
+        }
+
+        void button73_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/ReminderPage.xaml", UriKind.Relative));
+        }
+
+        void button72_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/LocationMapPage.xaml", UriKind.Relative));
+        }
+
+        void button71_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/MotionPage.xaml", UriKind.Relative));
         }
 
         void button1_Click(object sender, RoutedEventArgs e)
