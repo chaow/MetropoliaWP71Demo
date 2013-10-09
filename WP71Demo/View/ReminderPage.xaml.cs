@@ -7,6 +7,8 @@ namespace WP71Demo.View
 {
     public partial class ReminderPage : PhoneApplicationPage
     {
+        public System.Windows.Controls.Button TestButton = null;
+
         /// <summary>
         /// 50 reminders per application
         /// </summary>
@@ -15,9 +17,10 @@ namespace WP71Demo.View
         {
             InitializeComponent();
             Loaded += ReminderPage_Loaded;
+            TestButton = CreateButton;
         }
 
-        private void CreateButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        public void CreateButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             for (int i = 0; i < 5; i++)
             {
