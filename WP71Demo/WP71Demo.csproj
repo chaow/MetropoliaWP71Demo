@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Util\DataContractSerializerHelper.cs" />
     <Compile Include="Util\LocationService.cs" />
+    <Compile Include="Util\WideTileCreator.cs" />
     <Compile Include="ViewModel\PersonViewModel.cs" />
     <Compile Include="View\FirstPage.xaml.cs">
       <DependentUpon>FirstPage.xaml</DependentUpon>

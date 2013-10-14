@@ -127,6 +127,24 @@ namespace WP71Demo
             button71.Click += button71_Click;
             button72.Click += button72_Click;
             button73.Click += button73_Click;
+            button81.Click += button81_Click;
+        }
+
+        void button81_Click(object sender, RoutedEventArgs e)
+        {
+            WideTileCreator.UpdateFlipTile (
+             "test",
+             "test back",
+             "test back content",
+             "test wide back content",
+             20,
+             new Uri("/View/FirstPage.xaml?pinned=MyImage.jpg", UriKind.Relative), // tile id
+             new Uri("ApplicationIcon.png", UriKind.Relative),
+             new Uri("Background.png", UriKind.Relative),
+             new Uri("ApplicationIcon.png", UriKind.Relative),
+             new Uri("ApplicationIcon.png", UriKind.Relative),
+             new Uri("ApplicationIcon.png", UriKind.Relative)
+            );
         }
 
         void button73_Click(object sender, RoutedEventArgs e)

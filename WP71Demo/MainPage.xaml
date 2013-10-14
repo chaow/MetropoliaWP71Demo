@@ -34,6 +34,7 @@
                             <Button Content="Sensor" Height="100" Name="button71" Width="300" />
                             <Button Content="Location and map" Height="100" Name="button72" Width="300" />
                             <Button Content="Reminder" Height="100" Name="button73" Width="300" />
+                            <Button Content="Wide Tile" Height="100" Name="button81" Width="300" />
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
